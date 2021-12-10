@@ -1,5 +1,7 @@
-const IntegerNumber = 2021;
+//define the integer number here
+const IntegerNumber = 10000;
 
+//letters for each number
 const letter = {
 	1:'I',
 	5:'V',
@@ -12,6 +14,7 @@ const letter = {
 	10000:'X̅'
 };
 
+//calculates how many digits the number has
 function HowManyDigits (number) {
 	for (var counter=0; number>=1; counter++) {
 		number = number/10;
@@ -19,62 +22,77 @@ function HowManyDigits (number) {
 	return counter;
 };
 
-function Pot (arg1, arg2) {
-	if (arg2 == 0) {
-		arg1 = 1;
+//returns the potency of base 10 according the exponent
+function Pot10 (exponent) {
+	if (exponent == 0) {
+		return 1;
 	} else {
-		let originalValue = arg1;
-		while (arg2 > 1) {
-			arg1 = arg1*originalValue;
-			arg2--;
+		let total = 10;
+		while (exponent > 1) {
+			total = total*10;
+			exponent--;
 		}
+		return total;
 	}
-	return arg1;
 };
 
+//checks if the inserted number is valid (not having decimals or letters)
 function isValid (number) {
-	return (/^\d+$/.test(number) && number < 10000);
-}
+	return (/^\d+$/.test(number) && number <= 10000);
+};
 
+/*----------
+transforms the inserted integer number in a roman numeral
+1st - converts the valid number onto string and takes the first algarism
+2nd - analyzes that number and assign the correspondent letter according how many digits the number has
+3rd - repeats the process until the end, excluding the algarisms already readed
+----------*/
 function ResolveNumber (number) {
+
 	if (isValid(number)) {
 
 		number = number.toString();
-		var finalNumber = "";
+		var result = "";
 		while (number != "") {
-			var digits = HowManyDigits(number);
+			var unity = Pot10(HowManyDigits(number)-1);
 			var firstNumber = number[0];
 
 			if (firstNumber < 5) {
-				if (firstNumber < 4) {
+				if (firstNumber < 4) { 
+					//0,1,2,3
 					for (let i=0; i<firstNumber; i++) {
-						finalNumber += letter[1*Pot(10, digits-1)];
+						result += letter[unity];
 					}
-				} else {
-					finalNumber += letter[1*Pot(10, digits-1)];
-					finalNumber += letter[5*Pot(10, digits-1)];
+				} else { 
+					//4
+					result += letter[unity];
+					result += letter[5 * unity];
 				}
 			} else {
-				if (firstNumber < 9) {
-					finalNumber += letter[5*Pot(10, digits-1)];
+				if (firstNumber < 9) { 
+					//5,6,7,8
+					result += letter[5 * unity];
 					if (firstNumber > 5) {
 						for (let i=0; i<firstNumber-5; i++) {
-							finalNumber += letter[1*Pot(10, digits-1)];
+							result += letter[unity];
 						}
 					}
-				} else {
-					finalNumber += letter[1*Pot(10, digits-1)];
-					finalNumber += letter[1*Pot(10, digits)];
+				} else { 
+					//9
+					result += letter[unity];
+					result += letter[unity + 1];
 				}
 			}
 
 			number = number.substring(1);
 		}
-		return finalNumber;
+		return result;
 
 	} else {
 		return "Invalid Operation";
 	}
+
 };
 
+//show the result on the console
 console.log(ResolveNumber(IntegerNumber));
