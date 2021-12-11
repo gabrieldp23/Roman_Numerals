@@ -8,9 +8,9 @@ In this numeric system the numbers are represented by the letters **I, V, X, L, 
 
 1 - The letters I, X, C, M only can be repeated three consecutive times (Example: III = 3)
 
-2 - When two letters are different and lowest number is in front of the highest, it means a **subtraction** (Example: IV = 4)
+2 - When two letters are different and lowest number is in front of the highest, it's a **subtraction** (Example: IV = 4)
 
-3 - When two letters are different and highest number is in front of the lowest, it means a **sum** (Example: VI = 6)  
+3 - When two letters are different and highest number is in front of the lowest, it's a **sum** (Example: VI = 6)  
 
 |   I  |  1 |  XI  |  11  |
 |:----:|:--:|:----:|:----:|
@@ -27,7 +27,7 @@ In this numeric system the numbers are represented by the letters **I, V, X, L, 
 
 # My JS code
 
-This code is able to convert a integer number onto roman numerals, and vice versa with the functions `ConvertToRoman(int)` and `ConvertToInteger(string)`
+This code is able to convert a integer number onto roman numerals, and vice versa, with the functions `ConvertToRoman(int)` and `ConvertToInteger(string)`
 
 ```
 ConvertToRoman(2022) //-> "MMXXII"
@@ -36,3 +36,6 @@ ConvertToInteger("MMXXII") //-> 2022
 ```
 
 Be free to contribute with my learning doing a PR to show your way to do that conversion. There is a lot to improve, but is a good logic test to start coding with JS.
+
+---
+<img width=300 src="./papa.png"/>
