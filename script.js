@@ -82,7 +82,7 @@
 					} else { 
 						//9
 						result += letter[unity];
-						result += letter[unity + 1];
+						result += letter[unity * 10];
 					}
 				}
 
@@ -153,7 +153,7 @@
 			}
 
 			if (string.length == 1) {
-				finalNumber += Int(string);
+				finalNumber += Int(number[string]);
 				string = string.substring(1);
 			}
 		}
